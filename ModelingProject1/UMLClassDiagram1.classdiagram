@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="8be226c4-e663-448c-a61e-c79d4de3171f" name="UMLClassDiagram1" linkedPackageId="d1d804a3-3911-4f35-a12f-d07769ce3b8c" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="eb818b97-76f8-49ea-84f5-33eaf180f1d3" name="Hotel" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="ddb1d3a6-ccaf-4018-8ed3-280b2307a444" />
+        <suppliersInternal>
+          <interfaceRealization Id="770996a8-df80-4330-a603-d37af25ea69a">
+            <interfaceMoniker Id="3d69e0f6-c2a6-4ed3-bca6-ef734bba200a" LastKnownName="IHotel" />
+            <elementDefinition Id="944d0b9e-023a-47c5-bea6-644eec30079d" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <targetEnds>
+          <association Id="79a422ac-b415-430b-bb52-1e19d4c454dc" isDerived="false" sourceEndRoleName="Hotel" targetEndRoleName="Tour" isLeaf="false" isAbstract="false">
+            <classMoniker Id="172226f0-29b0-4827-96cb-21667b6d8c69" LastKnownName="Tour" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5e6277ac-bdd4-44df-a8a2-bf4d6e09a576" name="Hotel" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c82988b7-278d-40b5-8055-1b2bffca5fa4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c5ac3eed-9160-4b6c-b196-a965f626540c" name="Tour" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="0cb40e92-4e96-4fbd-a74d-066c5fbc70f5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="2a808b22-6bf5-4492-ab85-5fd02b6fa90e" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="172226f0-29b0-4827-96cb-21667b6d8c69" name="Tour" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="e8786d2b-7397-444f-b490-fa668354c23e" />
+        <suppliersInternal>
+          <interfaceRealization Id="6d887e89-4e77-4e8f-b2b7-9d172a2969ff">
+            <interfaceMoniker Id="2b29f510-54ab-4b38-8ae8-9f0a20815b80" LastKnownName="ITour" />
+            <elementDefinition Id="f5c741b0-c7fc-41ff-9cb1-b0acf1eb0339" />
+          </interfaceRealization>
+        </suppliersInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="57e93678-9a00-47a5-9119-1b69480dd655" name="Country" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="42e15461-bb59-4846-bfa1-e2872ce91b3b" />
+        <suppliersInternal>
+          <interfaceRealization Id="5c92d8e6-d838-4ef2-b551-b86c64fe866c">
+            <interfaceMoniker Id="49e1f189-1f4d-42d4-8a08-291bb85861b6" LastKnownName="ICountry" />
+            <elementDefinition Id="b6303b5c-e0a7-42ee-aa32-dd5a7b7a7144" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <targetEnds>
+          <association Id="82890d10-a454-4511-af32-81e5149db2a1" isDerived="false" sourceEndRoleName="Country" targetEndRoleName="Hotel" isLeaf="false" isAbstract="false">
+            <classMoniker Id="eb818b97-76f8-49ea-84f5-33eaf180f1d3" LastKnownName="Hotel" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="792541b6-aaed-4790-903e-0cfa5280855c" name="Country" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e5c6bdf5-3a80-4f0b-9ed8-7f2e9006919a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="39fdd84a-2293-442f-8131-194bd1e186e7" name="Hotel" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="1bcb1a93-944b-46ab-b301-7473de5135f4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b9ec3371-6ee9-48d3-82a1-b556edd1c456" />
+          </association>
+          <association Id="5ece5119-afe0-41ad-a1dc-168445e48ed4" isDerived="false" sourceEndRoleName="Country" targetEndRoleName="Tour" isLeaf="false" isAbstract="false">
+            <classMoniker Id="172226f0-29b0-4827-96cb-21667b6d8c69" LastKnownName="Tour" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="cd3b1e1c-21b6-4c02-a71b-2aa3f2f87274" name="Country" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="cde177de-2b2b-40e1-b5ec-d0fef8e1dc8e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2e7da73b-33c6-467f-84d1-45b993aadbc4" name="Tour" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="b299ddee-434b-488f-bb3f-e0a367d04642" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="28afabdc-9e71-4289-ae49-5455d1f5808e" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="3d69e0f6-c2a6-4ed3-bca6-ef734bba200a" name="IHotel" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e4f1f9dd-2d92-4316-88b6-59939cc7a8b9" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="353db839-481f-4fce-b668-54b9caa2c888" name="IService" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3bf85c63-1301-4762-ab75-13efac7a914b" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="49e1f189-1f4d-42d4-8a08-291bb85861b6" name="ICountry" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3cabfdf3-2c07-4e13-925b-10397caf3888" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="1dab9ad1-02cf-4ab5-9fb0-2e86faa3b1d4" name="User" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="a6a8b545-a4e0-4604-95dc-6a2ed95852d4" />
+        <targetEnds>
+          <association Id="104c4f8c-4cac-4f8b-8400-db6012fd2955" isDerived="false" sourceEndRoleName="User" targetEndRoleName="Order" isLeaf="false" isAbstract="false">
+            <classMoniker Id="1a175919-d30f-4eae-9f57-1f3b803599fc" LastKnownName="Order" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="01354b72-37db-4977-b5d2-c7b00b0dfd2a" name="User" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a085e1a1-9edc-46cb-bc19-d51689f64ed6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6d3053da-624a-4fd6-a867-c321cec7db42" name="Order" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8aba33e9-b84a-41f4-bd35-8bb1bd12ff0e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="71d4b653-6048-4eff-b27f-3cea9b7856e2" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="1a175919-d30f-4eae-9f57-1f3b803599fc" name="Order" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="1ec0e15d-63a6-4ff5-99ba-c6b52f640570" />
+        <targetEnds>
+          <association Id="ceff328c-009e-425b-9823-f10503e087ef" isDerived="false" sourceEndRoleName="Order" targetEndRoleName="User" isLeaf="false" isAbstract="false">
+            <classMoniker Id="1dab9ad1-02cf-4ab5-9fb0-2e86faa3b1d4" LastKnownName="User" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f468a2a3-708c-4f04-8422-46becc856cd9" name="Order" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="55a2ff1e-d52c-415d-8bac-3d8aeee3eea5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3c0d890f-046b-46a1-8937-8f943eca2ff1" name="User" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="298ea154-478c-4d82-905b-c812cf09c470" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e9359bc4-b137-439c-9a76-bde4462d4b09" />
+          </association>
+          <association Id="bc21126c-a98b-40da-82f3-667157930502" isDerived="false" sourceEndRoleName="Order" targetEndRoleName="Tour" isLeaf="false" isAbstract="false">
+            <classMoniker Id="172226f0-29b0-4827-96cb-21667b6d8c69" LastKnownName="Tour" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3b3997de-5401-4a5e-ab94-0566c4c21a9f" name="Order" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="29a8b9c3-03d4-4d98-a3a3-6b0291c38f44" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2778a7a0-ee56-4680-8ee7-3f5aa91200da" name="Tour" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="ae192360-27ae-43a0-b981-de3eea9675ba" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="691117d8-4987-49aa-beef-fc2ab829a06e" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="2b29f510-54ab-4b38-8ae8-9f0a20815b80" name="ITour" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f3a5fe21-5e9b-41d0-b1a0-1aaf2c077f0a" />
+        <suppliersInternal>
+          <dependency Id="70028fd2-0e08-413f-b62f-ecb32500ee92">
+            <interfaceMoniker Id="353db839-481f-4fce-b668-54b9caa2c888" LastKnownName="IService" />
+            <elementDefinition Id="d216aeec-7512-48f1-b551-9c17bf8aebcb" />
+          </dependency>
+        </suppliersInternal>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="d1d804a3-3911-4f35-a12f-d07769ce3b8c" name="ModelingProject1">
+    <elementDefinition Id="ed16a724-221b-409c-bae7-30a4ae9f56d9" />
+    <profileInstances>
+      <packageHasProfileInstances Id="2d9caff3-3592-41e4-a7bf-a703ab7851ee">
+        <profileInstance Id="3a9291eb-eb7f-463c-8621-794b9c1de7c8" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="4740592a-47e0-4dd1-a7c8-de490359a42a">
+        <profileInstance Id="055751f6-8f36-42c4-8d12-fdf819c9e7fe" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

@@ -1,0 +1,67 @@
+﻿@model SunTravel.Models.Hotel
+
+@{
+}
+<div class="container">
+    <h2 class="title">Hotel: @Html.DisplayFor(model => model.Name)</h2>
+</div>
+
+<div class="container">
+    <div class="container ListItems">
+        <div class="col-md-6">
+            <img class="ListImg" data-toggle="modal" data-target=".bs-example-modal-lg" @Html.Raw("<img style='width:400px; height:300px;' src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.Photo1) + "\"")>
+        </div>
+        <div class="col-md-6">
+            <div class="ListStar col-md-10">Country: @Html.DisplayFor(model => model.Country.Name) | City: @Html.DisplayFor(model => model.City)</div>
+            <div class="ListStar"> @Html.DisplayFor(model => model.Stars) <span class="glyphicon glyphicon-star" aria-hidden="true"></span></div>
+        </div>
+        <div class="col-md-6">
+            <hr id="ListHr">
+            @Html.DisplayFor(model => model.Description)
+        </div>
+        <div class="col-md-6">
+            <div class="container">
+                @using (Html.BeginForm())
+            {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions col-md-offset-2 col-md-8">
+                        <input type="submit" value="To order now!" class="btn btn-lg btn-default btnBooking" />
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container text-center">
+    <!-- Large modal -->
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img class="img-responsive"  @Html.Raw("<img src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.Photo1) + "\"") alt="1">
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" @Html.Raw("<img src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.Photo2) + "\"") alt="2">
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" @Html.Raw("<img src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.Photo3) + "\"") alt="3">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

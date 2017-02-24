@@ -1,0 +1,139 @@
+﻿@model SunTravel.Models.Hotel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="container">
+    <h2 class="title">Edite</h2>
+</div>
+
+@using (Html.BeginForm("Edit", "Hotel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2 col-md-offset-1" })
+                <div class="col-md-2">
+                    @Html.DropDownListFor(model => model.Country.Id, ViewBag.hotels as SelectList, htmlAttributes: new { @class = "form-control col-md-2 col-md-offset-1" })
+                    @Html.ValidationMessageFor(model => model.Country.Id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2 col-md-offset-1" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2 col-md-offset-1" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @* Stars *@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Stars, htmlAttributes: new { @class = "control-label col-md-2 col-md-offset-1" })
+            <div class="col-md-1">
+                @{
+                    List<SelectListItem> listItems = new List<SelectListItem>();
+                    for (int i = 1; i <= 5; i++)
+                    {
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = i + "*",
+                            Value = i.ToString()
+                        });
+                    }
+                }
+                @Html.DropDownListFor(model => model.Stars, listItems, new { @class = "form-control col-md-2 col-md-offset-1" })
+                @Html.ValidationMessageFor(model => model.Stars, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2 col-md-offset-1" })
+            <div class="col-md-6">
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "10" }) 
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="container col-md-offset-2 col-md-8">
+            <div class="table-responsive">
+                <table class="table table-responsive">
+                    <tr class="success">
+                        <th>Photo1 </th>
+                        <th>Photo2 </th>
+                        <th>Photo3 </th>
+                    </tr>
+                    <tr>               
+                        <th>
+                            @{
+                                if (Model.Photo1 != null)
+                                {
+                                    @Html.Raw("<img style='width:200px; name:photo1; height:150px;' src=\"data:image/jpeg;base64,"
+                                    + Convert.ToBase64String(Model.Photo1) + "\" />")
+                                }
+                                else
+                                {
+                                    <span>None</span>
+                                }
+                            }
+                        </th>
+                        <th>
+                            @{
+                                if (Model.Photo2 != null)
+                                {
+                                    @Html.Raw("<img style='width:200px; height:150px;' src=\"data:image/jpeg;base64,"
+                                    + Convert.ToBase64String(Model.Photo2) + "\" />")
+                                }
+                                else
+                                {
+                                    <span>None</span>
+                                }
+                            }
+                        </th>
+                        <th>
+                            @{
+                                if (Model.Photo3 != null)
+                                {
+                                    @Html.Raw("<img style='width:200px; height:150px;' src=\"data:image/jpeg;base64,"
+                                    + Convert.ToBase64String(Model.Photo3) + "\" />")
+                                }
+                                else
+                                {
+                                    <span>None</span>
+                                }
+                            }
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="file" name="uploadImage1" />
+                        </th>
+                        <th>
+                            <input type="file" name="uploadImage2" />
+                        </th>
+                        <th>
+                            <input type="file" name="uploadImage3" />
+                        </th>
+                    </tr>
+                   
+                </table>
+            </div>
+        </div>        
+        <div class="container">
+            <div class="col-md-offset-4 col-md-4">
+                <input type="submit" name="action" value="Upload" class="btn btn-lg btn-default btnBooking" />
+            </div>
+        </div>
+    </div>
+}

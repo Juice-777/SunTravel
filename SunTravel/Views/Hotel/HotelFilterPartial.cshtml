@@ -1,0 +1,87 @@
+﻿@using (Ajax.BeginForm("HotelItemsPartial", new AjaxOptions { UpdateTargetId = "results" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container ">
+        <div class="ListItems container">
+            <div class="col-md-3">
+                <div class="col-md-4">
+                    <h5>Country</h5>
+                </div>
+                <div class="col-md-8">
+                    <select class="form-control" name="SelectCountry">
+                        <option value="All">All</option>
+                        @{
+                            foreach (var item in @ViewBag.Country)
+                            {
+                                if (@item.Name == @ViewBag.SelectCountry)
+                                {
+                                    <option value="@item.Name" selected>@item.Name</option>
+
+                                }
+                                else
+                                {
+                                    <option value="@item.Name">@item.Name</option>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="col-md-4">
+                    <h5>Stars</h5>
+                </div>
+                <div class="col-md-8">
+                    <select class="form-control" name="SelectStars">
+                        <option value="0">All</option>
+                        @{
+                            foreach (var item in @ViewBag.Stars)
+                            {
+                                if (@item.Stars == @ViewBag.SelectStars)
+                                {
+                                    <option value="@item.Stars" selected>@item.Stars</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.Stars">@item.Stars</option>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="col-md-4">
+                    <h5>Sort by</h5>
+                </div>
+                <div class="col-md-8">
+                    <select class="form-control" name="SelectSort">
+                        @{
+                            if (@ViewBag.SelectSort == 0)
+                            {
+                                <option value="0" selected>Name</option>
+                                <option value="1">Country</option>
+                                <option value="2">Stars</option>
+                            }
+                            else if (@ViewBag.SelectSort == 1)
+                            {
+                                <option value="0">Name</option>
+                                <option value="1" selected>Country</option>
+                                <option value="2">Stars</option>
+                            }
+                            else
+                            {
+                                <option value="0">Name</option>
+                                <option value="1">Country</option>
+                                <option value="2" selected>Stars</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-offset-1 col-md-2">
+                <input type="submit" value="Filter" class="btn btn-group-sm btn-default btnBooking" />
+            </div>
+        </div>
+    </div>
+}

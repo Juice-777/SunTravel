@@ -1,0 +1,14 @@
+﻿@*@model IEnumerable<SunTravel.Models.Hotel>*@
+@*@model PagedList.IPagedList<SunTravel.Models.Hotel>
+@using PagedList.Mvc;*@
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <h2 class="title">All hotels</h2>
+</div>
+
+@Html.Partial("HotelFilterPartial")
+@Html.Partial("HotelItemsPartial")

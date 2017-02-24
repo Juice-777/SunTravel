@@ -1,0 +1,323 @@
+﻿@model SunTravel.Models.BookingForm
+
+<div class="BookingForm">
+    <div class="container-fluid ">
+        <div class="col-md-12 ">    
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "BookingForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    <h2 class="title">Booking form</h2>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group col-md-12">
+                        <!--Name Email-->
+                        <div class="col-md-6">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4 labelBF" })
+                            </div>
+                            <div class="col-md-8 BookingField">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-4 labelBF" })
+                            </div>
+                            <div class="col-md-8 BookingField">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <!--Hotel Country-->
+                        <div class="col-md-6">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-4 labelBF" })
+                            </div>
+                            <div class="col-md-8 BookingField">
+                                @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.Hotel, htmlAttributes: new { @class = "control-label col-md-4 labelBF" })
+                            </div>
+                            <div class="col-md-8 BookingField">
+                                @Html.EditorFor(model => model.Hotel, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Hotel, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <!--Date Comfort-->
+                        <div class="col-md-6">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.CheckIn, htmlAttributes: new { @class = "control-label col-md-4 labelBF" })
+                            </div>
+                            <div class="col-md-8 BookingField">
+                                @Html.EditorFor(model => model.CheckIn, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CheckIn, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.Comfort, htmlAttributes: new { @class = "control-label col-md-4 labelBF" })
+                            </div>
+                            <div class="col-md-8 BookingField">
+                                @{
+                                    List<SelectListItem> listItems = new List<SelectListItem>();
+                                    listItems.Add(new SelectListItem
+                                    {
+                                        Text = "Cheap",
+                                        Value = "1"
+                                    });
+                                    listItems.Add(new SelectListItem
+                                    {
+                                        Text = "Standart",
+                                        Value = "2",
+                                        Selected = true
+                                    });
+                                    listItems.Add(new SelectListItem
+                                    {
+                                        Text = "Lux",
+                                        Value = "3"
+                                    });
+                                }
+                                @Html.DropDownListFor(model => model.Comfort, listItems, new { @class = "form-control" })
+                                @*@Html.EditorFor(model => model.Comfort, new { htmlAttributes = new { @class = "form-control" } })*@
+                                @Html.ValidationMessageFor(model => model.Comfort, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <!--Adalts Children Rooms -->
+                        <div class="col-md-12">
+                            <div class="col-md-4">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.Adults, htmlAttributes: new { @class = "control-label col-md-6 labelBF" })
+                                </div>
+                                <div class="col-md-4 BookingField">
+                                    @{
+                                        List<SelectListItem> listAdults = new List<SelectListItem>();
+                                        listAdults.Add(new SelectListItem
+                                        {
+                                            Text = "1",
+                                            Value = "1"
+                                        });
+                                        listAdults.Add(new SelectListItem
+                                        {
+                                            Text = "2",
+                                            Value = "2",
+                                            Selected = true
+                                        });
+                                        listAdults.Add(new SelectListItem
+                                        {
+                                            Text = "3",
+                                            Value = "3"
+                                        });
+                                        listAdults.Add(new SelectListItem
+                                        {
+                                            Text = "4",
+                                            Value = "4",
+                                            Selected = true
+                                        });
+                                        listAdults.Add(new SelectListItem
+                                        {
+                                            Text = "5",
+                                            Value = "5"
+                                        });
+                                    }
+                                    @Html.DropDownListFor(model => model.Adults, listAdults, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Adults, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.Rooms, htmlAttributes: new { @class = "control-label col-md-6 labelBF" })
+                                </div>
+                                <div class="col-md-4 col-md-offset-2 BookingField">
+                                    @{
+                                        List<SelectListItem> listRooms = new List<SelectListItem>();
+                                        listRooms.Add(new SelectListItem
+                                        {
+                                            Text = "1",
+                                            Value = "1"
+                                        });
+                                        listRooms.Add(new SelectListItem
+                                        {
+                                            Text = "2",
+                                            Value = "2",
+                                            Selected = true
+                                        });
+                                        listRooms.Add(new SelectListItem
+                                        {
+                                            Text = "3",
+                                            Value = "3"
+                                        });
+                                        listRooms.Add(new SelectListItem
+                                        {
+                                            Text = "4",
+                                            Value = "4",
+                                            Selected = true
+                                        });
+                                        listRooms.Add(new SelectListItem
+                                        {
+                                            Text = "5",
+                                            Value = "5"
+                                        });
+                                    }
+                                    @Html.DropDownListFor(model => model.Rooms, listRooms, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Rooms, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.Children, htmlAttributes: new { @class = "control-label col-md-6" })
+                                </div>
+                                <div class="col-md-4 BookingField">
+                                    @{
+                                        List<SelectListItem> listChildren = new List<SelectListItem>();
+                                        listChildren.Add(new SelectListItem
+                                        {
+                                            Text = "None",
+                                            Value = "0",
+                                            Selected = true
+                                        });
+
+                                    for (int i = 1; i < 5; i++)
+                                    {
+                                        listChildren.Add(new SelectListItem
+                                        {
+                                            Text = i.ToString(),
+                                            Value = i.ToString()
+                                        });
+                                    }
+                                 }
+                                    @Html.DropDownListFor(model => model.Children, listChildren, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Children, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Msg-->
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2 labelBF" })
+                            </div>
+                            <div class="col-md-10 BookingField">
+                                <textarea class="form-control" id="Message" name="Message" rows="5" cols="45"></textarea>
+                                @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-5 col-md-2 ">
+                            <input type="submit" onclick="return validate()" id="submit" value="To send" class="btn btn-lg btn-default btnBooking" />
+                        </div>
+                    </div>
+                </div>
+                }
+        </div>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Refresh", "Index")
+</div>
+<!--Table orders-->
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal">x</button>
+                <h2 class="modal-title">Error</h2>
+            </div>
+            <div class="modal-body">
+                <h3 id="myModalInfo"></h3>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+        var form = document.forms.BookingForm;
+
+        function validate() {
+            var msg = validEmail();
+            msg += validName();
+            msg += validDate();
+            msgModul(msg);
+            if (msg == "") {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function msgModul(errors) {
+            if (errors != "") {
+                var msg = document.getElementById("myModalInfo");
+                msg.innerHTML = errors;
+                $('#errorModal').modal();
+            }
+        }
+
+        function validDate() {
+            var date = form.elements.CheckIn.value;
+            var msg;
+            if (date == "") {
+                msg = "Enter date \n";
+                return msg;
+            }
+            else {
+                msg = "";
+                return msg;
+            }
+        }
+
+        function validName() {
+            var name = form.elements.Name.value;
+            var msg;
+            if (name == "") {
+                msg = "Enter your name <br />";
+                return msg;
+            }
+            else {
+                msg = "";
+                return msg;
+            }
+        }
+
+        function validEmail() {
+            var email = form.elements.Email.value;
+            var at = String.fromCharCode(64);
+            var atpos = email.indexOf(at);
+            var dotpos = email.lastIndexOf(".");
+            var msg;
+
+            if (email == '') {
+                msg = "Email can not be blank <br />";
+                return msg;
+            }
+            else if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= email.length) {
+                msg = "Not a valid e-mail address <br />";
+                return msg;
+            }
+            else {
+                msg = "";
+                return msg;
+            }
+        }
+</script>
+
+<!--DatePicker-->
+<script>
+        $(function () {
+            if (!Modernizr.inputtypes.date) {
+                $(function () {
+                    $("input[type='date']")
+                                .datepicker({ dateFormat: 'dd/mm/yy' })
+                                .get(0).setAttribute("type", "text");
+                })
+            }
+        });
+</script>

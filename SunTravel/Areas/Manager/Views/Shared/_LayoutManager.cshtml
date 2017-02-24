@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <script type="text/javascript">
+        var appInsights=window.appInsights||function(config){
+            function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace","Ajax"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t
+        }({
+            instrumentationKey:"a132df89-b8b0-40f8-aa98-3b0ebfe2a100"
+        });
+
+        window.appInsights=appInsights;
+        appInsights.trackPageView();
+    </script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    <header>
+        <!--HeadNavigate-->
+        <div class="container-fluid">
+            <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 navigate">
+                            <div class="col-md-6"><a href="@Url.Action("Index", "Hotel", new { area = "Manager" })">Edite hotel</a></div>
+                            <div class="col-md-6 bordLine"><a href="@Url.Action("Index", "Tour")">Edite user</a></div>
+                        </div>
+                        <div class="col-lg-2 col-lg-offset-1 navigateCenter">
+                            <div class="col-md-12">
+                                <a href="@Url.Action("Index", "Home", new { area = "Manager" })"><img src="~/Files/SunTravelLogo.png" class="logo" /></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-lg-offset-2 navigate">
+                            @*<div class="col-md-6"><a href="#">Login</a></div>
+                            <div class="col-md-6 bordLine"><a href="#">Register</a></div>*@
+                            @Html.Partial("_LoginPartial")
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </header>
+
+        @RenderBody()
+
+    <div>
+        <div class="container-fluid footer">
+            <div class="row">
+                <div class="col-md-8 col-sm-8 footerInfo">
+                    <p>SanTravel©  2004 - @DateTime.Now.Year</p>
+                </div>
+                <div class="col-md-4 col-sm-4 soc_btn">
+                    <div class="footer_item">
+                        <button class="soc_btn-facebook">
+                            <i class="fa fa-facebook"></i>
+                        </button>
+                        <button class="soc_btn-twitter">
+                            <i class="fa fa-twitter"></i>
+                        </button>
+                        <button class="soc_btn-vk">
+                            <i class="fa fa-vk"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

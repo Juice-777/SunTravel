@@ -1,0 +1,91 @@
+﻿@model SunTravel.Models.Hotel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container">
+    <h2 class="title">Add new hotel</h2>
+</div>
+
+@using (Html.BeginForm("Create", "Hotel", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <!--Country-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2 col-md-offset-1" })
+            <div class="col-md-2">
+                @Html.DropDownListFor(model => model.CountryId, ViewBag.Countries as SelectList, htmlAttributes: new { @class = "form-control col-md-2" })
+                @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2 col-md-offset-1" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2 col-md-offset-1" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <!--Stars-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.Stars, htmlAttributes: new { @class = "control-label col-md-2 col-md-offset-1" })
+            <div class="col-md-1">
+                    @{
+                        List<SelectListItem> listItems = new List<SelectListItem>();
+                        for (int i = 0; i <= 4; i++)
+                        {
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = (i + 1) + "*",
+                                Value = (i+1).ToString()
+                                });
+                        }
+                    }
+                @Html.DropDownListFor(model => model.Stars, listItems, new { @class = "form-control col-md-2 col-md-offset-1" })
+                @Html.ValidationMessageFor(model => model.Stars, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.Photo1, htmlAttributes: new { @class = "control-label col-md-2 col-md-offset-1" })
+            <div class="col-md-2">
+                <input type="file" name="uploadImage1" />
+            </div>
+        </div>
+
+        <div class="form-group">
+                @Html.LabelFor(model => model.Photo2, htmlAttributes: new { @class = "control-label col-md-2 col-md-offset-1" })
+                <div class="col-md-2 ">
+                    <input type="file" name="uploadImage2" />
+                </div>
+                @Html.LabelFor(model => model.Photo3, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2 ">
+                    <input type="file" name="uploadImage3" />
+                </div>
+        </div>
+
+        <div class="form-group" >
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2 col-md-offset-1" })
+            <div class="col-md-6">
+                <textarea class="form-control" id="Description" name="Description" rows="10" cols="45"></textarea>
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-4">
+                <input type="submit" value="Create" class="btn btn-lg btn-default btnBooking" />
+            </div>
+        </div>
+    </div>
+}
