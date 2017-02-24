@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SunTravel.Models;
+using PagedList;
 
 namespace SunTravel.Areas.Manager.Controllers
 {
@@ -14,12 +15,15 @@ namespace SunTravel.Areas.Manager.Controllers
     {
         private SunTravelContext db = new SunTravelContext();
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+
             var tours = db.Tours
                 .Include(t => t.Country)
-                .Include(t => t.Hotel);
-            return View(tours.ToList());
+                .Include(t => t.Hotel).OrderBy(x => x.Id).ToPagedList(pageNumber, pageSize);
+            return View(tours);
         }
 
         public ActionResult Details(int? id)

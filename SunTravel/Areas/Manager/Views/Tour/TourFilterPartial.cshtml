@@ -1,0 +1,30 @@
+﻿@using (Ajax.BeginForm("HotelItemsPartial", new AjaxOptions { UpdateTargetId = "results" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container ">
+        <div class="ListItems container">
+            <div class="col-md-4">
+                <div class="col-md-4">
+                    <h5>Search by:</h5>
+                </div>
+                <div class="col-md-6">
+                    <select class="form-control" name="getBy">
+                        <option value="FindId">id</option>
+                        <option value="FindName">name</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-4">
+                    <h5>Enter value:</h5>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" name="getValue" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" value="Search" class="btn btn-group-sm btn-default btnBooking" />
+            </div>
+        </div>
+    </div>
+}
