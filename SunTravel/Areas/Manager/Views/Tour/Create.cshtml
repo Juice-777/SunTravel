@@ -5,7 +5,6 @@
     Layout = "~/Areas/Manager/Views/Shared/_LayoutManager.cshtml";
 }
 
-
 <div class="container">
     <h2 class="title">Add new tour</h2>
 </div>
@@ -33,19 +32,18 @@
             </div>
 
             <div class="form-group col-md-6">
-                @Html.LabelFor(model => model.CountryId, "Country", htmlAttributes: new { @class = "control-label col-md-4" })
+                @Html.LabelFor(model => model.CountryId, htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
-                    @Html.DropDownList("Country", ViewBag.Countries as SelectList, new { id = "country", @class = "form-control"})
-                    @Html.ValidationMessageFor(model => model.Country.Id, "", new { @class = "text-danger" })
+                    @Html.DropDownList("CountryId", ViewBag.Countries as SelectList, new { id = "country", @class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group col-md-6">
-                <label class = "control-label col-md-4">Hotel name</label>
-                @*@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4" })*@
+                @Html.LabelFor(model => model.HotelId, htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
-                    @Html.DropDownList("Hotel", ViewBag.Hotels as SelectList, new { id = "hotel", @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    @Html.DropDownList("HotelId", ViewBag.Hotels as SelectList, new { id = "HotelId", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.HotelId, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -107,16 +105,13 @@
                 </div>
             </div>
 
-            <div class="form-group col-md-6">
-                @Html.LabelFor(model => model.Photo1, htmlAttributes: new { @class = "control-label col-md-4" })
-                <div class="col-md-8">
-                    <div class="col-md-2">
-                        <input type="file" name="uploadImage1" />
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Photo1, htmlAttributes: new { @class = "control-label col-md-2 col-md-offset-1" })
+                <div class="col-md-2 ">
+                    <input type="file" name="uploadImage1" />
                 </div>
             </div>
         </div>
-
 
         <div class="form-group">
             <div class="col-md-offset-4 col-md-4">
@@ -143,30 +138,6 @@
         });
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @section scripts{
     <script type="text/javascript">
     $(function () {
@@ -181,10 +152,11 @@
                 success: function (data) {
 
                     // заменяем содержимое присланным частичным представлением
-                    $('#hotel').replaceWith(data);
+                    $('#HotelId').replaceWith(data);
                 }
             });
         });
+
     })
     </script>
 }

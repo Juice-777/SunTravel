@@ -24,7 +24,7 @@ namespace SunTravel.Models
         [Display(Name = "Price tour")]
         public decimal Price { get; set; }
         public int FreePlace { get; set; } //количество свободных путёвок
-        [Display(Name = "Photo")]
+        //[Display(Name = "Photo")]
         public byte[] Photo1 { get; set; }
         public int Active { get; set; }
 

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using SunTravel.Models;
 using PagedList;
+using System.IO;
 
 namespace SunTravel.Areas.Manager.Controllers
 {
@@ -53,20 +54,33 @@ namespace SunTravel.Areas.Manager.Controllers
         {
             return PartialView(db.Hotels.Where(c => c.CountryId == id).ToList());
         }
-
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Place,DateStart,Duration,Price,FreePlace,Photo1,Active,Insurance,Food,CountryId")] Tour tour)
+        public ActionResult Create(Tour tour, HttpPostedFileBase uploadImage1)
         {
             if (ModelState.IsValid)
             {
-                db.Tours.Add(tour);
+                if (uploadImage1 != null)
+                {
+                    byte[] imageData = null;
+                    // считываем переданный файл в массив байтов
+                    using (var binaryReader = new BinaryReader(uploadImage1.InputStream))
+                    {
+                        imageData = binaryReader.ReadBytes(uploadImage1.ContentLength);
+                    }
+                    // установка массива байтов
+                    tour.Photo1 = imageData;
+
+                    db.Tours.Add(tour);
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name", tour.CountryId);
+            //ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name", tour.CountryId);
+            //ViewBag.HotelId = new SelectList(db.Hotels, "Id", "Name", tour.HotelId);
+
             return View(tour);
         }
         

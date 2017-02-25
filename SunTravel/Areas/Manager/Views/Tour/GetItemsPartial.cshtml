@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<SunTravel.Models.Hotel>
 
-<select id="hotel" name="Hotel" class="form-control">
+<select id="HotelId" name="HotelId" class="form-control">
+    @*<option selected value="null">Choose</option>*@
+    <option disabled="">Choose hotel</option>
+
     @foreach (var item in Model)
     {
-        <option value="@item.Id">@item.Name</option>
+        <option  value="@item.Id">@item.Name</option>
     }
 </select>
