@@ -38,9 +38,5 @@ namespace SunTravel.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
-        public ActionResult Test()
-        {
-            return View();
-        }
     }
 }

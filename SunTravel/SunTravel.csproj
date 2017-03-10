@@ -217,6 +217,7 @@
     <Compile Include="Controllers\HotelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TourController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -227,6 +228,8 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ITour.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Map.cs" />
+    <Compile Include="Models\Station.cs" />
     <Compile Include="Models\SunTravelContext.cs" />
     <Compile Include="Models\ICountry.cs" />
     <Compile Include="Models\IHotel.cs" />
@@ -390,6 +393,11 @@
     <Content Include="Views\Hotel\Details.cshtml" />
     <Content Include="Views\Hotel\HotelFilterPartial.cshtml" />
     <Content Include="Views\Hotel\HotelItemsPartial.cshtml" />
+    <Content Include="Views\Tour\TourItemsPartial.cshtml" />
+    <Content Include="Views\Tour\TourFilterPartial.cshtml" />
+    <Content Include="Views\Tour\Index.cshtml" />
+    <Content Include="Views\Tour\GetItemsPartial.cshtml" />
+    <Content Include="Views\Tour\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />

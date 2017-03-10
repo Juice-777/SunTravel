@@ -19,19 +19,6 @@
             <hr id="ListHr">
             @Html.DisplayFor(model => model.Description)
         </div>
-        <div class="col-md-6">
-            <div class="container">
-                @using (Html.BeginForm())
-            {
-                    @Html.AntiForgeryToken()
-
-                    <div class="form-actions col-md-offset-2 col-md-8">
-                        <input type="submit" value="To order now!" class="btn btn-lg btn-default btnBooking" />
-                    </div>
-                }
-            </div>
-
-        </div>
     </div>
 </div>
 

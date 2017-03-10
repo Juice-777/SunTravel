@@ -53,7 +53,7 @@ namespace SunTravel.Controllers
             int GetStars = Convert.ToInt32(SelectStars, 16);
             int GetSort = SelectSort;
 
-            /// Values for Filters in View
+            ///Values for Filters in View
             IQueryable<Hotel> country = from c in db.Hotels
                                         group c by c.Country into uniqueIds
                                         select uniqueIds.FirstOrDefault();
@@ -120,7 +120,5 @@ namespace SunTravel.Controllers
             }
             return View(b);
         }
-
-
     }
 }

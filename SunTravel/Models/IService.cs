@@ -9,6 +9,6 @@ namespace SunTravel.Models
     interface IService
     {
         bool Insurance { get; set; } //Страховка
-        int Food { get; set; }
+        Food Food { get; set; }
     }
 }

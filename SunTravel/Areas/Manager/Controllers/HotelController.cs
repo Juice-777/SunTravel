@@ -98,7 +98,6 @@ namespace SunTravel.Areas.Manager.Controllers
                         imageData = binaryReader.ReadBytes(uploadImage3.ContentLength);
                     }
                     hotel.Photo3 = imageData;
-
                     db.Hotels.Add(hotel);
                 }
                 db.SaveChanges();
@@ -132,6 +131,7 @@ namespace SunTravel.Areas.Manager.Controllers
                                 .FirstOrDefault();
 
                 editHotel.Id = hotel.Id;
+                editHotel.Name = hotel.Name;
                 editHotel.Stars = hotel.Stars;
                 editHotel.City = hotel.City;
                 editHotel.CountryId = hotel.Country.Id;

@@ -1,20 +1,27 @@
-﻿@using (Ajax.BeginForm("HotelItemsPartial", new AjaxOptions { UpdateTargetId = "results" }))
+﻿@model PagedList.IPagedList<SunTravel.Models.Tour>
+@using PagedList.Mvc;
+
+
+@using (Ajax.BeginForm("TourItemsPartial", new AjaxOptions { UpdateTargetId = "results" }))
 {
+    @ViewBag.Msg
     @Html.AntiForgeryToken()
     <div class="container ">
         <div class="ListItems container">
+            <!--ID/Name-->
             <div class="col-md-4">
                 <div class="col-md-4">
                     <h5>Search by:</h5>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <select class="form-control" name="getBy">
                         <option value="FindId">id</option>
                         <option value="FindName">name</option>
                     </select>
                 </div>
             </div>
-            <div class="col-md-6">
+            <!--Value-->
+            <div class="col-md-4">
                 <div class="col-md-4">
                     <h5>Enter value:</h5>
                 </div>
@@ -22,9 +29,81 @@
                     <input type="text" name="getValue" class="form-control">
                 </div>
             </div>
-            <div class="col-md-2">
-                <input type="submit" value="Search" class="btn btn-group-sm btn-default btnBooking" />
+            <!--Btn-->
+            <div class="col-md-2 col-md-offset-2">
+                <input type="submit" value="Find" name="myButton" class="btn btn-group-sm btn-default btnBooking" />
             </div>
+            <br /><hr>
+
+            <!--btnParams:-->
+            <!--Country-->
+                <div class="col-md-2">
+                    <h5>Country</h5> 
+                    @Html.DropDownList("CountryId", ViewBag.Countries as SelectList, new { id = "country", @class = "form-control" })
+                </div>
+                <!--Hotel-->
+                <div class="col-md-2">
+                    <h5>Select hotel</h5>
+                    @Html.DropDownList("HotelId", ViewBag.Hotels as SelectList,  new { id = "HotelId", @class = "form-control" })
+                </div>
+                <div class="col-md-2">
+                    <h5>Active</h5>
+                    <select name="active" class="form-control">
+                        <option value=0>Show</option>
+                        <option value=1>Frost</option>
+                        <option value=2>Disabled</option>
+                        <option selected value=10>--ALL--</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <h5>Food</h5>
+                    <select name="food" class="form-control">
+                        <option value=0>None</option>
+                        <option value=1>Light</option>
+                        <option value=2>Morning</option>
+                        <option value=3>Full</option>
+                        <option selected value=10>--ALL--</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <h5>Place</h5>
+                    <select name="place" class="form-control">
+                        <option selected value=10>--ALL--</option>
+                        <option value=1>1</option>
+                        <option value=2>2</option>
+                        <option value=3>3</option>
+                        <option value=4>4</option>
+                    </select>
+                </div>
+                
+                <div class="col-md-2">
+                    <input type="submit" name="myButton" value="Filter" class="btn btn-group-sm btn-default btnBooking" /><br />
+                </div>
         </div>
     </div>
 }
+
+<script type="text/javascript">
+    $(function () {
+        $('#country').append($('<option>', {
+            value: 0,
+            text: '--ALL--'
+        }));
+        $("#country").val(0);
+
+        $('#country').change(function () {
+            // получаем выбранный id
+            var id = $(this).val();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("GetItemsPartial")/' + id,
+                success: function (data) {
+
+                    // заменяем содержимое присланным частичным представлением
+                    $('#HotelId').replaceWith(data);
+                }
+            });
+        });
+    })
+</script>
+

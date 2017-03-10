@@ -16,6 +16,6 @@ namespace SunTravel.Models
         decimal Price { get; set; }
         int FreePlace { get; set; } //количество свободных путёвок
         byte[] Photo1 { get; set; }
-        int Active { get; set; }
+        Active Active { get; set; }
     }
 }

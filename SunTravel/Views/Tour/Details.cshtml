@@ -1,0 +1,108 @@
+﻿@model SunTravel.Models.Tour
+
+@{
+}
+@*  *@
+
+<div class="container">
+    <h2 class="title">Tour: @Html.DisplayFor(model => model.Name)</h2>
+</div>
+
+<div class="container">
+    <div class="container ListItems">
+
+        <div class="col-md-6">
+            <img class="ListImg" data-toggle="modal" data-target=".bs-example-modal-lg" @Html.Raw("<img style='width:400px; height:300px;' src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.Photo1) + "\"")>
+        </div>
+        <div class="col-md-6">
+            <div class="ListStar col-md-10">@Html.DisplayFor(model => model.Hotel.Country.Name) - @Html.DisplayFor(model => model.Hotel.City) | Price: $@Html.DisplayFor(model => model.Price)</div>
+            <div class="ListStar"> @Html.DisplayFor(model => model.Hotel.Stars) <span class="glyphicon glyphicon-star" aria-hidden="true"></span></div>
+
+            <hr id="ListHr">
+            <div class="col-md-12">
+                Hotel:@Html.RouteLink(@Html.DisplayTextFor(modelItem => modelItem.Hotel.Name).ToString(), new { controller = "Hotel", action = "Details", id = Model.Id })
+            </div>
+            <div class="col-md-6">
+                Country: @Html.ActionLink(@Html.DisplayTextFor(modelItem => modelItem.Country.Name).ToString(), "Details", new { id = Model.Id })
+            </div>
+            <div class="col-md-6">
+                City: @Html.DisplayFor(modelItem => modelItem.Hotel.City)
+            </div>
+            <div class="col-md-6">
+                Place: @Html.DisplayFor(modelItem => modelItem.Place)
+            </div>
+            <div class="col-md-6">
+                Food: @Html.DisplayFor(modelItem => modelItem.Food)
+            </div>
+            <div class="col-md-6">
+                Start: @Html.DisplayFor(modelItem => modelItem.DateStart)
+            </div>
+            <div class="col-md-6">
+                Duration: @Html.DisplayFor(modelItem => modelItem.Duration) days
+            </div>
+            <div class="col-md-12">
+                @{
+                    if (Model.Insurance == true)
+                    {
+                        <span>Insurance: yes</span>
+                    }
+                    else
+                    {
+                        <span>Insurance: no</span>
+                    }
+                }
+            </div>
+            <hr id="ListHr">
+            <div class="col-md-12">
+                <div class="container">
+                    @Html.DisplayFor(model => model.Hotel.Description)
+                </div>
+            </div>
+            <hr id="ListHr">
+
+            <div class="col-md-12">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions col-md-offset-2 col-md-8">
+                        <input type="submit" value="To order now!" class="btn btn-lg btn-default btnBooking" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container text-center">
+    <!-- Large modal -->
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img class="img-responsive" @Html.Raw("<img src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.Photo1) + "\"") alt="1">
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" @Html.Raw("<img src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.Hotel.Photo1) + "\"") alt="2">
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" @Html.Raw("<img src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.Hotel.Photo2) + "\"") alt="2">
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" @Html.Raw("<img src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.Hotel.Photo3) + "\"") alt="3">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

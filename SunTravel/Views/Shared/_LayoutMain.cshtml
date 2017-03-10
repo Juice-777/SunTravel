@@ -25,6 +25,7 @@
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <meta name="description" content="Tour" />
 </head>
 <body>
     <header>
@@ -43,8 +44,6 @@
                          </div>
                      </div>
                      <div class="col-lg-3 col-lg-offset-2 navigate">
-                         @*<div class="col-md-6"><a href="#">Login</a></div>
-                         <div class="col-md-6 bordLine"><a href="#">Register</a></div>*@
                          @Html.Partial("_LoginPartial")
                      </div>
                  </div>
@@ -62,13 +61,13 @@
                 </div>
                 <div class="col-md-4 col-sm-4 soc_btn">
                     <div class="footer_item">
-                        <button class="soc_btn-facebook">
+                        <button class="soc_btn-facebook btn">
                             <i class="fa fa-facebook"></i>
                         </button>
-                        <button class="soc_btn-twitter">
+                        <button class="soc_btn-twitter btn">
                             <i class="fa fa-twitter"></i>
                         </button>
-                        <button class="soc_btn-vk">
+                        <button class="soc_btn-vk btn">
                             <i class="fa fa-vk"></i>
                         </button>
                     </div>

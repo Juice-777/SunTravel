@@ -1,0 +1,88 @@
+﻿@model PagedList.IPagedList<SunTravel.Models.Tour>
+@using PagedList.Mvc;
+
+<div id="results">
+    <div class="container">
+        @foreach (var item in Model)
+        {
+            <div class="ListItems container">
+                <div class="col-md-6">
+                    @{
+                        if (item.Photo1 != null)
+                        {
+                            <a href="@Url.Action("Details", "Tour", new {Id = item.Id})">
+                                @Html.Raw("<img style='width:400px; height:300px;' class='ListImg' src=\"data:image/jpeg;base64,"
+                             + Convert.ToBase64String(item.Photo1) + "\"")
+                            </a>
+                        }
+                        else
+                        {
+                            <span>None</span>
+                        }
+                    }
+                </div>
+                <div class="col-md-6">
+                    <div class="container">
+                        <div class="col-md-7 ListName">
+                            @Html.ActionLink(@Html.DisplayTextFor(modelItem => item.Name).ToString(), "Details", new { id = item.Id })
+                        </div>
+                        <div class="col-md-3 ListName">
+                            $@Html.DisplayFor(modelItem => item.Price)
+                        </div>
+                        <div class="col-md-2 ListStar">
+                            @Html.DisplayFor(modelItem => item.Hotel.Stars) <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <div class="container ListInfo">
+                        <hr id="ListHr">
+                        <div class="TourInfo container">
+                            <div class="col-md-12">
+                                Hotel: @Html.RouteLink(@Html.DisplayTextFor(modelItem => item.Hotel.Name).ToString(), new { controller = "Hotel", action = "Details", id = item.Id })
+                        </div>
+                        <div class="col-md-4">
+                            Country: @Html.ActionLink(@Html.DisplayTextFor(modelItem => item.Country.Name).ToString(), "Details", "", new { id = item.Id })
+                        </div>
+                        <div class="col-md-4">
+                            City: @Html.DisplayFor(modelItem => item.Hotel.City)
+                        </div>
+                        <div class="col-md-4">
+                            Place: @Html.DisplayFor(modelItem => item.Place)
+                        </div>
+                        <div class="col-md-4">
+                            Start: @Html.DisplayFor(modelItem => item.DateStart)
+                        </div>
+                        <div class="col-md-4">
+                            Duration: @Html.DisplayFor(modelItem => item.Duration) days
+                        </div>
+                        <div class="col-md-4">
+                            @{
+                                if (item.Insurance == true)
+                                {
+                                    <span>Insurance: yes</span>
+                                }
+                                else
+                                {
+                                    <span>Insurance: no</span>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <hr id="ListHr">
+                    <div class="col-md-12">
+                        @item.Hotel.Description.Substring(0, Math.Min(item.Hotel.Description.Length, 250))...
+                    </div>
+                </div>
+            </div>
+        </div>
+                                }
+        <div class="container">
+            <div class="col-md-8 col-md-offset-2">
+                @Html.PagedListPager(Model, page => Url.Action("TourItemsPartial",
+                        new { page, @ViewBag.MyButton, @ViewBag.CountryId, @ViewBag.HotelId, @ViewBag.Star, @ViewBag.Place, @ViewBag.Food }),
+            PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "results" }))
+
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) from @Model.PageCount
+            </div>
+        </div>
+    </div>
+</div>

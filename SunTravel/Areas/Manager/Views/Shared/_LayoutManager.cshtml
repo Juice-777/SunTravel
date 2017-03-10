@@ -25,6 +25,7 @@
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <meta name="description" content="The description of my page" />
 </head>
 <body>
     <header>
@@ -53,27 +54,27 @@
 
         @RenderBody()
 
-    <div>
-        <div class="container-fluid footer">
+    <footer class="footer">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 col-sm-8 footerInfo">
                     <p>SanTravel©  2004 - @DateTime.Now.Year</p>
                 </div>
                 <div class="col-md-4 col-sm-4 soc_btn">
                     <div class="footer_item">
-                        <button class="soc_btn-facebook">
+                        <button class="soc_btn-facebook btn">
                             <i class="fa fa-facebook"></i>
                         </button>
-                        <button class="soc_btn-twitter">
+                        <button class="soc_btn-twitter btn">
                             <i class="fa fa-twitter"></i>
                         </button>
-                        <button class="soc_btn-vk">
+                        <button class="soc_btn-vk btn">
                             <i class="fa fa-vk"></i>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </footer>
 </body>
 </html>

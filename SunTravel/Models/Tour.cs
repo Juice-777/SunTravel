@@ -26,13 +26,11 @@ namespace SunTravel.Models
         public int FreePlace { get; set; } //количество свободных путёвок
         //[Display(Name = "Photo")]
         public byte[] Photo1 { get; set; }
-        public int Active { get; set; }
+        public Active Active { get; set; }
 
         //IService
         public bool Insurance { get; set; }
-        public int Food { get; set; }
-
-
+        public Food Food { get; set; }
 
         //Key country
         public int? CountryId { get; set; }
@@ -41,6 +39,18 @@ namespace SunTravel.Models
         //Key hotel
         public int? HotelId { get; set; }
         public Hotel Hotel { get; set; }
-
+    }
+    public enum Food : int
+    {
+        None = 0,
+        Light,
+        Morning,
+        Full
+    }
+    public enum Active : int
+    {
+        Show = 0,
+        Frost,
+        Disabled
     }
 }

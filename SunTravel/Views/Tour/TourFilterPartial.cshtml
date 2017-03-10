@@ -1,0 +1,87 @@
+﻿@model PagedList.IPagedList<SunTravel.Models.Tour>
+@using PagedList.Mvc;
+
+
+@using (Ajax.BeginForm("TourItemsPartial", new AjaxOptions { UpdateTargetId = "results" }))
+{
+    @ViewBag.Msg
+    @Html.AntiForgeryToken()
+    <div class="container ">
+        <div class="ListItems container">
+            <div class="col-md-8">
+                <div class="col-md-2"><h4>Country</h4></div>
+                <div class="col-md-4">@Html.DropDownList("CountryId", ViewBag.Countries as SelectList, new { id = "country", @class = "form-control" })</div>
+                <div class="col-md-2"><h4>Hotel</h4></div>
+                <div class="col-md-4">@Html.DropDownList("HotelId", ViewBag.Hotels as SelectList, new { id = "HotelId", @class = "form-control" })</div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="col-md-4"><h4>Stars</h4></div>
+                <div class="col-md-8">
+                    <select name="star" class="form-control">
+                        <option value=1>1*</option>
+                        <option value=2>2*</option>
+                        <option value=3>3**</option>
+                        <option value=4>4**</option>
+                        <option value=5>5***</option>
+                        <option selected value=10>--ALL--</option>
+                    </select>
+                </div>
+            </div>
+            <!---->
+            <div class="col-md-8">
+                <div class="col-md-2"><h4>Food</h4></div>
+                <div class="col-md-4">
+                    <select name="food" class="form-control">
+                        <option value=0>None</option>
+                        <option value=1>Light</option>
+                        <option value=2>Morning</option>
+                        <option value=3>Full</option>
+                        <option selected value=10>--ALL--</option>
+                    </select>
+                </div>
+                <div class="col-md-2"><h4>Place</h4></div>
+                <div class="col-md-4">
+                    <select name="place" class="form-control">
+                        <option selected value=10>--ALL--</option>
+                        <option value=1>1</option>
+                        <option value=2>2</option>
+                        <option value=3>3</option>
+                        <option value=4>4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                
+            </div>
+            <div class="col-md-2 col-md-offset-1">
+                <input type="submit" name="myButton" value="Filter" class="btn btn-default btnBooking" /><br />
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $(function () {
+        $('#country').append($('<option>', {
+            value: 0,
+            text: '--ALL--'
+        }));
+        $("#country").val(0);
+
+        $('#country').change(function () {
+            // получаем выбранный id
+            var id = $(this).val();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("GetItemsPartial")/' + id,
+                success: function (data) {
+
+                    // заменяем содержимое присланным частичным представлением
+                    $('#HotelId').replaceWith(data);
+                }
+            });
+        });
+    })
+</script>
+
