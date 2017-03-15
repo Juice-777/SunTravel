@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2></h2>
+<div class="container">
+    <h2 class="title">Create Role</h2>
+</div>
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="col-md-4">
+            <label for="usr">Role name:</label>
+            <input type="text" class="form-control" name="RoleName">
+        </div>
+
+        <div class="col-md-2 col-md-offset-6">
+            <input type="submit" name="action" value="Save" class="btn btn-lg btn-default btnBooking" />
+        </div>
+    }
+</div>

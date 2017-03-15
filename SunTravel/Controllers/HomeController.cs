@@ -5,12 +5,17 @@ using System.Web;
 using System.Web.Mvc;
 using SunTravel.Models;
 using System.IO;
+using System.Web.Security;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
 
 namespace SunTravel.Controllers
 {
     public class HomeController : Controller
     {
         SunTravelContext db = new SunTravelContext();
+        ApplicationDbContext context = new ApplicationDbContext();
+
         // GET: Main
         [HttpGet]
         public ActionResult Index()
@@ -31,11 +36,18 @@ namespace SunTravel.Controllers
         }
         public ActionResult Contact()
         {
+            var roleStore = new RoleStore<IdentityRole>(context);
+            var roleMngr = new RoleManager<IdentityRole>(roleStore);
+
+            var roles = roleMngr.Roles.ToList();
+
+            ViewBag.Role = Roles.GetAllRoles();
             return View();
         }
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
+            context.Dispose();
             base.Dispose(disposing);
         }
     }

@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "ManageUserRoles";
+}
+<div class="container">
+    <h2 class="title">Manage User Roles</h2>
+
+    @Html.ActionLink("Create New Role", "Create") | @Html.ActionLink("Manage User Role", "ManageUserRoles")
+    <hr />
+    @ViewBag.ResultMessage
+    <h2>Role Add to User</h2>
+    @using (Html.BeginForm("RoleAddToUser", "Roles"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="container">
+            <div class="col-md-3">
+                <label for="usr">Username:</label>
+                <input type="text" class="form-control" name="UserName">
+            </div>
+            <div class="col-md-3">
+                <label for="usr">Role Name:</label>
+                @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...", htmlAttributes: new { @class = "form-control col-md-2" })
+            </div>
+            <div class="col-md-4 col-md-offset-2">
+                <input type="submit" name="action" value="Save" class="btn btn-lg btn-default btnBooking" />
+            </div>
+        </div>
+    }
+    <hr />
+    <h2>Get Roles for a User</h2>
+    <div class="container">
+        @using (Html.BeginForm("GetRoles", "Roles"))
+        {
+            @Html.AntiForgeryToken()
+            <div class="col-md-3">
+                <label for="usr">Username:</label>
+                <input type="text" class="form-control" name="UserName">
+            </div>
+            <div class="col-md-3">
+                @if (ViewBag.RolesForThisUser != null)
+                {
+                    <div style="background-color:dodgerblue;">
+                        <h3>Roles for this user: </h3>
+                        <ol>
+                            @foreach (string s in ViewBag.RolesForThisUser)
+                            {
+                                <li>@s</li>
+                            }
+                        </ol>
+                    </div>
+                }
+            </div>
+            <div class="col-md-4 col-md-offset-2">
+                <input type="submit" name="action" value="Get Roles for this User" class="btn btn-lg btn-default btnBooking" />
+            </div>
+        }
+    </div>
+    <hr />
+    <h2>Delete A User from a Role</h2>
+    @using (Html.BeginForm("DeleteRoleForUser", "Roles"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="container">
+            <div class="col-md-3">
+                <label for="usr">Username:</label>
+                <input type="text" class="form-control" name="UserName">
+            </div>
+            <div class="col-md-3">
+                <label for="usr">Role Name:</label>
+                @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...", htmlAttributes: new { @class = "form-control col-md-2" })
+            </div>
+            <div class="col-md-4 col-md-offset-2">
+                <input type="submit" name="action" value="Delete this user from Role" class="btn btn-lg btn-default btnBooking" />
+            </div>
+        </div>
+    }
+</div>

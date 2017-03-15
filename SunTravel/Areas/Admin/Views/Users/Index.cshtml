@@ -1,0 +1,71 @@
+﻿@model SunTravel.Models.GroupedUserViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    <h2 class="title">Users and roles</h2>
+</div>
+
+<div class="container">
+    <table class="table">
+        <tr class="success">
+            <th>Name</th>
+            <th>Role</th>
+            <th>Options</th>
+            <th>Delete user</th>
+        </tr>
+
+        @foreach (var user in Model.Admins)
+        {
+            <tr>
+                <td>
+                     <strong>@user.Username </strong>
+                </td>
+                <td>
+                    <strong>@user.Roles </strong>
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditRole", new { UserName = @user.Username })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { UserName = @user.Username })
+                </td>
+            </tr>
+        }
+        @foreach (var user in Model.Managers)
+        {
+            <tr>
+                <td>
+                    <strong>@user.Username </strong>
+                </td>
+                <td>
+                    <strong>@user.Roles </strong>
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditRole", new { UserName = @user.Username })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { UserName = @user.Username })
+                </td>
+            </tr>
+        }
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>
+                    <strong>@user.Username </strong>
+                </td>
+                <td>
+                    <strong>@user.Roles </strong>
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditRole", new { UserName = @user.Username })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { UserName = @user.Username })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

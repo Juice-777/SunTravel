@@ -1,0 +1,54 @@
+﻿<div class="container">
+    <h2 class="title">Add role to user</h2>
+
+    @ViewBag.ResultMessage
+    @using (Html.BeginForm("AddRole", "Users"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="container">
+            <div class="col-md-3">
+                <label for="usr">Username:</label>
+                <label for="usr" name="UserName">@ViewBag.UserName</label>
+                <input type="text" value="@ViewBag.UserName" name="UserName" style="display: none">
+            </div>
+            <div class="col-md-3">
+                <label for="usr">Role Name:</label>
+                @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...", htmlAttributes: new { @class = "form-control col-md-2" })
+            </div>
+
+            <div class="col-md-3 col-md-offset-2">
+                <input type="submit" name="action" value="Role Add" class="btn btn-lg btn-default btnBooking" />
+            </div>
+        </div>
+    }
+
+    @using (Html.BeginForm("DeleteRoleForUser", "Users"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="container">
+            <input type="text" value="@ViewBag.UserName" name="UserName" style="display: none">
+            <div class="col-md-3">
+                @if (ViewBag.RolesForThisUser != null)
+                {
+                    <label for="usr">Roles for this user:</label>
+                    <ol>
+                        @foreach (string s in ViewBag.RolesForThisUser)
+                        {
+                            <li>@s</li>
+                        }
+                    </ol>
+                }
+            </div>
+            <div class="col-md-3">
+                <label for="usr">Role Name:</label>
+                @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...", htmlAttributes: new { @class = "form-control col-md-2" })
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <input type="submit" name="action" value="Delete this Role" class="btn btn-lg btn-default btnBooking" />
+            </div>
+        </div>
+    }
+
+</div>

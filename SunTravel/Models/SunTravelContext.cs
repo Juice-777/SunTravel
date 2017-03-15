@@ -10,7 +10,8 @@ namespace SunTravel.Models
     {
         public SunTravelContext():
             base("SunTravel")
-        { }
+        {
+        }
         public DbSet<BookingForm> BookingForms { get; set; }
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<Country> Countries { get; set; }

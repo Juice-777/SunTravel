@@ -3,6 +3,12 @@
     ViewBag.Title = "Index";
 }
 <div class="container">
-    <h2>Welcome to Admin area</h2>
-</div>
+    <h2><b>Welcome to Admin area</b></h2>
 
+    <div>
+        @Html.ActionLink("Go to Roles", "Index", "Roles")
+    </div>
+    <div>
+        @Html.ActionLink("Go to Users", "Index", "Users")
+    </div>
+</div>
