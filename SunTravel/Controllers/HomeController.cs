@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace SunTravel.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         SunTravelContext db = new SunTravelContext();
@@ -34,14 +35,9 @@ namespace SunTravel.Controllers
             }
             return View(bookingForm);
         }
+        [Authorize(Roles ="Admin")]
         public ActionResult Contact()
         {
-            var roleStore = new RoleStore<IdentityRole>(context);
-            var roleMngr = new RoleManager<IdentityRole>(roleStore);
-
-            var roles = roleMngr.Roles.ToList();
-
-            ViewBag.Role = Roles.GetAllRoles();
             return View();
         }
         protected override void Dispose(bool disposing)

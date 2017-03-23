@@ -11,6 +11,7 @@ using System.Data.Entity;
 
 namespace SunTravel.Controllers
 {
+    [AllowAnonymous]
     public class HotelController : Controller
     {
         SunTravelContext db = new SunTravelContext();

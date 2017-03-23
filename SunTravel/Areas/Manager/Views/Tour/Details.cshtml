@@ -4,21 +4,12 @@
     ViewBag.Title = "Details";
     Layout = "~/Areas/Manager/Views/Shared/_LayoutManager.cshtml";
 }
+<div class="container">
+    <h2 class="title">Details</h2>
+</div>
 
-<h2>Details</h2>
-
-<div>
-    <h4>Tour</h4>
-    <hr />
+<div class="container">
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Country.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Country.Name)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -68,14 +59,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Photo1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Photo1)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Active)
         </dt>
 
@@ -98,10 +81,9 @@
         <dd>
             @Html.DisplayFor(model => model.Food)
         </dd>
-
     </dl>
 </div>
-<p>
+<div class="container">
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</div>

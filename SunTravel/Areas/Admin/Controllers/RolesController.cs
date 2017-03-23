@@ -15,10 +15,10 @@ using SunTravel.Controllers;
 
 namespace SunTravel.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RolesController : Controller
     {
         ApplicationDbContext context = new ApplicationDbContext();
-
         // GET: Admin/Home  Show Roles
         public ActionResult Index()
         {

@@ -11,6 +11,7 @@ using System.Data.Entity;
 
 namespace SunTravel.Areas.Manager.Controllers
 {
+    [Authorize(Roles = "Manager")]
     public class HotelController : Controller
     {
         SunTravelContext db = new SunTravelContext();

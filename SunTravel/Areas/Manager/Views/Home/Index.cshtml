@@ -5,8 +5,17 @@
 <div class="container">
     <h2><b>Welcome to Manager area</b></h2>
 
-    <div class="col-md-6 col-md-offset-4"><a href="@Url.Action("Index", "Country", new { area = "Manager" })">Edite country</a></div>
-    <div class="col-md-6 col-md-offset-4"><a href="@Url.Action("Index", "Hotel", new { area = "Manager" })">Edite hotel</a></div>
-    <div class="col-md-6 col-md-offset-4"><a href="@Url.Action("Index", "Tour", new { area = "Manager" })">Edite tour</a></div>
+    @Html.ActionLink("Orders", "Index", new { area = "Manager", controller = "Order" })
+    <br />
+    @Html.ActionLink("Manage hotels", "Index", new { area = "Manager", controller = "Hotel" }) |
+    @Html.ActionLink("Add hotel", "Create", new { area = "Manager", controller = "Hotel" })
+    <br />
+    @Html.ActionLink("Manage tours", "Index", new { area = "Manager", controller = "Tour" }) |
+    @Html.ActionLink("Add tour", "Create", new { area = "Manager", controller = "Tour" })
+    <br />
+    @Html.ActionLink("Edite country", "Index", new { area = "Manager", controller = "Country" }) |
+    @Html.ActionLink("Add country", "Index", new { area = "Manager", controller = "Country" })
+    <br />
+    @Html.ActionLink("Show booking", "Index", new { area = "Manager", controller = "Booking" })
 </div>
 

@@ -5,7 +5,7 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="col-md-6 loginHead">@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</div>
+        <div class="col-md-6 loginHead">@Html.ActionLink("Hello " + User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</div>
         <div class="col-md-6 bordLine"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></div>
     }
 }

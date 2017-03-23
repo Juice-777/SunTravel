@@ -8,12 +8,14 @@ using System.Web.Mvc;
 namespace SunTravel.Areas.Manager.Controllers
 {
     [Authorize(Roles = "Manager")]
-    public class HomeController : Controller
+    public class BookingController : Controller
     {
-        // GET: Manager/Home
+        SunTravelContext db = new SunTravelContext();
+        // GET: Manager/Booking
         public ActionResult Index()
         {
-            return View();
+            var booking = db.BookingForms.ToList();
+            return View(booking);
         }
     }
 }

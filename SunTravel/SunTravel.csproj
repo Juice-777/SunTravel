@@ -209,9 +209,11 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\RolesController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Manager\Controllers\BookingController.cs" />
     <Compile Include="Areas\Manager\Controllers\HomeController.cs" />
     <Compile Include="Areas\Manager\Controllers\CountryController.cs" />
     <Compile Include="Areas\Manager\Controllers\HotelController.cs" />
+    <Compile Include="Areas\Manager\Controllers\OrderController.cs" />
     <Compile Include="Areas\Manager\Controllers\TourController.cs" />
     <Compile Include="Areas\Manager\ManagerAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -231,9 +233,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ITour.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Map.cs" />
     <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\Station.cs" />
     <Compile Include="Models\SunTravelContext.cs" />
     <Compile Include="Models\ICountry.cs" />
     <Compile Include="Models\IHotel.cs" />
@@ -344,6 +344,11 @@
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Users\EditRole.cshtml" />
+    <Content Include="Areas\Manager\Views\Booking\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Order\Details.cshtml" />
+    <Content Include="Areas\Manager\Views\Order\Edit.cshtml" />
+    <Content Include="Areas\Manager\Views\Order\Delete.cshtml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
@@ -409,11 +414,12 @@
     <Content Include="Views\Tour\Index.cshtml" />
     <Content Include="Views\Tour\GetItemsPartial.cshtml" />
     <Content Include="Views\Tour\Details.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Manager\Models\" />
-    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Fonts\glyphicons-halflings-regular.woff" />

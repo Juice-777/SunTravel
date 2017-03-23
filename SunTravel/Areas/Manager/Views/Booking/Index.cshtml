@@ -1,0 +1,46 @@
+﻿@model List<SunTravel.Models.BookingForm>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Manager/Views/Shared/_LayoutManager.cshtml";
+}
+<div class="container">
+    <h2 class="title">Booking orders</h2>
+</div>
+
+<div class="container">
+
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Adults</td>
+            <td>CheckIn</td>
+            <td>Children</td>
+            <td>Comfort</td>
+            <td>Country</td>
+            <td>Email</td>
+            <td>Hotel</td>
+            <td>Message</td>
+            <td>Rooms</td>
+        </tr>
+        @{
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Adults </td>
+                    <td>@item.CheckIn</td>
+                    <td>@item.Children</td>
+                    <td>@item.Comfort</td>
+                    <td>@item.Country</td>
+                    <td>@item.Email</td>
+                    <td>@item.Hotel</td>
+                    <td>@item.Message</td>
+                    <td>@item.Rooms</td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+
+
+

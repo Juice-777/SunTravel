@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace SunTravel.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         ApplicationDbContext context = new ApplicationDbContext();
@@ -19,23 +20,25 @@ namespace SunTravel.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var allusers = context.Users.ToList();
+            return View(allusers);
+
 
             //Search id role
-            var roleUser = context.Roles.Where(x => x.Name == "User").FirstOrDefault();
-            var roleManager = context.Roles.Where(x => x.Name == "Manager").FirstOrDefault();
-            var roleAdmin = context.Roles.Where(x => x.Name == "Admin").FirstOrDefault();
+            //var roleUser = context.Roles.Where(x => x.Name == "User").FirstOrDefault();
+            //var roleManager = context.Roles.Where(x => x.Name == "Manager").FirstOrDefault();
+            //var roleAdmin = context.Roles.Where(x => x.Name == "Admin").FirstOrDefault();
 
-            var users = allusers.Where(x => x.Roles.Select(role => role.RoleId).Contains(roleUser.Id)).ToList();
-            var userVM = users.Select(user => new UserViewModel { Username = user.UserName, Roles = string.Join(",", roleUser.Name)}).ToList();
+            //var users = allusers.Where(x => x.Roles.Select(role => role.RoleId).Contains(roleUser.Id)).ToList();
+            //var userVM = users.Select(user => new UserViewModel { Username = user.UserName, Roles = string.Join(",", roleUser.Name)}).ToList();
 
-            var admins = allusers.Where(x => x.Roles.Select(role => role.RoleId).Contains(roleAdmin.Id)).ToList();
-            var adminsVM = admins.Select(user => new UserViewModel { Username = user.UserName, Roles = string.Join(",", roleAdmin.Name) }).ToList();
+            //var admins = allusers.Where(x => x.Roles.Select(role => role.RoleId).Contains(roleAdmin.Id)).ToList();
+            //var adminsVM = admins.Select(user => new UserViewModel { Username = user.UserName, Roles = string.Join(",", roleAdmin.Name) }).ToList();
 
-            var managers = allusers.Where(x => x.Roles.Select(role => role.RoleId).Contains(roleManager.Id)).ToList();
-            var managersVM = admins.Select(user => new UserViewModel { Username = user.UserName, Roles = string.Join(",", roleManager.Name) }).ToList();
+            //var managers = allusers.Where(x => x.Roles.Select(role => role.RoleId).Contains(roleManager.Id)).ToList();
+            //var managersVM = admins.Select(user => new UserViewModel { Username = user.UserName, Roles = string.Join(",", roleManager.Name) }).ToList();
 
-            var model = new GroupedUserViewModel { Users = userVM, Admins = adminsVM, Managers = managersVM };
-            return View(model);
+            //var model = new GroupedUserViewModel { Users = userVM, Admins = adminsVM, Managers = managersVM };
+            //return View(model);
         }
 
         //Delete user

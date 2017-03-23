@@ -1,0 +1,117 @@
+﻿@model SunTravel.Models.Tour
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<div class="container">
+    <h2 class="title">Bay tour: @Html.DisplayFor(model => model.Name)</h2>
+</div>
+
+<div class="container">
+    @using (Html.BeginForm("Create", "Order", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Country.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Country.Name)
+                </dd>
+
+                <dt>
+                    Hotel
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Hotel.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Place)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Place)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DateStart)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DateStart)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Duration)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Duration)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Insurance)
+                </dt>
+
+                <dd>
+                    @{
+                        if (Model.Insurance == true)
+                        {
+                            <span>yes</span>
+                        }
+                        else
+                        {
+                            <span>no</span>
+                        }
+                    }
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Food)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Food)
+                </dd>
+
+                <dt>
+                    Add massenge
+                </dt>
+
+                <dd>
+                    <textarea class="form-control" name="DescriptionUser" rows="4" cols="5"></textarea>
+                </dd>
+                <dd style="display: none">
+                    @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control", @value = "@Model.Id" } })
+                </dd>
+            </dl>
+
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-4">
+                    <input type="submit" value="Create" class="btn btn-lg btn-default btnBooking" />
+                </div>
+            </div>
+        </div>
+    }
+</div>

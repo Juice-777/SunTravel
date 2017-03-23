@@ -4,6 +4,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
+@Html.ActionLink("Admin area", "Index", new { area = "Admin", controller = "Home" }) | @Html.ActionLink("Manager area", "Index", new { area = "Manager", controller = "Home" })
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -29,7 +30,6 @@
             <div class="carousel-caption">
                 <h1>Italy from $149</h1>
                 <div class="col-md-4 col-md-offset-4">
-                    @Html.RouteLink("Link", new { controller = "Tour", action = "Details", id = 54})
                     <button class="btn btn-default btn-lg btn_choose" onClick="location.href = '../Tour/Details/49'">To bay!</button>
                 </div>
             </div>

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<SunTravel.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Manager/Views/Shared/_LayoutManager.cshtml";
+}
+
+<div class="container">
+    <h2 class="title">All orders</h2>
+</div>
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manager)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescriptionUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescriptionManager)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TourId)
+            </th>
+            <th>
+                Options
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manager)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCreate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescriptionUser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescriptionManager)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TourId)
+                </td>
+                <td>
+                    @Html.ActionLink("Edite status", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Process's status", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

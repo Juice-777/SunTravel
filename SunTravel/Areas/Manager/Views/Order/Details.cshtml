@@ -1,0 +1,74 @@
+﻿@model SunTravel.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Manager/Views/Shared/_LayoutManager.cshtml";
+}
+<div class="container">
+    <h2 class="title">Details</h2>
+</div>
+
+<div class="container">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manager)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manager)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescriptionUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescriptionUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescriptionManager)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescriptionManager)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TourId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TourId)
+        </dd>
+
+    </dl>
+</div>
+<div class="container">
+    @Html.ActionLink("Back to List", "Index") | 
+    @Html.ActionLink("Show tour", "Details", "Tour", new { id = Model.TourId }, null)
+</div>

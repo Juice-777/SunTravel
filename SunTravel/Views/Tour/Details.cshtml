@@ -2,7 +2,6 @@
 
 @{
 }
-@*  *@
 
 <div class="container">
     <h2 class="title">Tour: @Html.DisplayFor(model => model.Name)</h2>
@@ -59,15 +58,8 @@
                 </div>
             </div>
             <hr id="ListHr">
-
             <div class="col-md-12">
-                @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="form-actions col-md-offset-2 col-md-8">
-                        <input type="submit" value="To order now!" class="btn btn-lg btn-default btnBooking" />
-                    </div>
-                }
+                <button class="col-md-offset-2 col-md-8 btn btn-default btn-lg btn_choose" onClick="location.href = '/Order'+'/Index/'+@Model.Id">To bay!</button>
             </div>
         </div>
     </div>

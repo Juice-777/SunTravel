@@ -13,8 +13,23 @@ namespace SunTravel.Models
         public DateTime DateCreate { get; set; }
         public string DescriptionUser { get; set; }
         public string DescriptionManager { get; set; }
-        
-        //id tour 
-        //enum status
+        public Status Status { get; set; }
+        public int TourId { get; set; }
+
+
+
+        //Key tour
+        public ICollection<Tour> Tours { get; set; }
+        public Order()
+        {
+            Tours = new List<Tour>();
+        }
+    }
+    public enum Status : int
+    {
+        Starting = 0,
+        InProcess,
+        Completed,
+        Canceled
     }
 }

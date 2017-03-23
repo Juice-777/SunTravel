@@ -11,10 +11,12 @@ using System.Data.Entity;
 
 namespace SunTravel.Areas.Manager.Controllers
 {
+    [Authorize(Roles = "Manager")]
     public class CountryController : Controller
     {
         SunTravelContext db = new SunTravelContext();
         // GET: Country
+
         public ActionResult Index(int? page)
         {
             int pageSize = 8;

@@ -12,6 +12,7 @@ using System.IO;
 
 namespace SunTravel.Areas.Manager.Controllers
 {
+    [Authorize(Roles = "Manager")]
     public class TourController : Controller
     {
         private SunTravelContext db = new SunTravelContext();
@@ -135,8 +136,6 @@ namespace SunTravel.Areas.Manager.Controllers
             return View(tour);
         }
 
-
-
         public ActionResult Create()
         {
             int selectedIndex = 1;
@@ -154,7 +153,6 @@ namespace SunTravel.Areas.Manager.Controllers
         {
             return PartialView(db.Hotels.Where(c => c.CountryId == id).ToList());
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]

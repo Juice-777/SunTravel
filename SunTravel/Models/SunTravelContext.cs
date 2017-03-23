@@ -16,5 +16,6 @@ namespace SunTravel.Models
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Tour> Tours { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }

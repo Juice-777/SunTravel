@@ -33,6 +33,13 @@ namespace SunTravel
                 defaults: new { controller = "Hotel", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "SunTravel.Controllers" }
                 );
+
+            routes.MapRoute(
+                name: "Order_Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Order", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "SunTravel.Controllers" }
+                );
         }
     }
 }

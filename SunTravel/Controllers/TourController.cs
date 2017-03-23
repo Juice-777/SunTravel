@@ -12,6 +12,7 @@ using System.IO;
 
 namespace SunTravel.Controllers
 {
+    [AllowAnonymous]
     public class TourController : Controller
     {
         private SunTravelContext db = new SunTravelContext();

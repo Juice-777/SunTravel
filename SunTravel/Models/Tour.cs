@@ -39,6 +39,10 @@ namespace SunTravel.Models
         //Key hotel
         public int? HotelId { get; set; }
         public Hotel Hotel { get; set; }
+
+        //Key order
+        public int? OrderId { get; set; }
+        public Order Order { get; set; }
     }
     public enum Food : int
     {

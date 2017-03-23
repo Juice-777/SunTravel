@@ -1,4 +1,43 @@
-﻿@model SunTravel.Models.GroupedUserViewModel
+﻿@model List<SunTravel.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    <h2 class="title">Users and roles</h2>
+</div>
+
+<div class="container">
+    <table class="table">
+        <tr class="success">
+            <th>Id (hesh)</th>
+            <th>Name</th>
+            <th>Options</th>
+            <th>Delete user</th>
+        </tr>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>
+                    <strong>@user.Id </strong>
+                </td>
+                <td>
+                    <strong>@user.UserName </strong>
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditRole", new { UserName = @user.UserName })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { UserName = @user.UserName })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+
+@*@model SunTravel.Models.GroupedUserViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -20,7 +59,7 @@
         {
             <tr>
                 <td>
-                     <strong>@user.Username </strong>
+                    <strong>@user.Username </strong>
                 </td>
                 <td>
                     <strong>@user.Roles </strong>
@@ -68,4 +107,4 @@
             </tr>
         }
     </table>
-</div>
+</div>*@
